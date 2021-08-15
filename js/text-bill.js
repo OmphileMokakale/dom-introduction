@@ -31,12 +31,13 @@ function textBillTotal(){
     totalCostElem.innerHTML = totalCost.toFixed(2);
 
 
-
+   /*
      //update the totals that is displayed on the screen.
      callsTotalElem.innerHTML = callsTotal.toFixed(2);
      smsTotalElem.innerHTML = smsTotal.toFixed(2);
      var totalCost = callsTotal + smsTotal;
      totalCostElem.innerHTML = totalCost.toFixed(2);
+     */
      
      //color the total based on the criteria
      if (totalCost >= 50){

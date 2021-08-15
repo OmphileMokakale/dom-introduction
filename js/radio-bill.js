@@ -6,28 +6,24 @@ const radioBillAddBtn = document.querySelector(".radioBillAddBtn");
 
 //create a variable that will keep track of the total bill
 
-var callTotalOne = document.querySelector(".callTotalOne");
-const smsTotalOne = document.querySelector(".smsTotalOne");
-const totalOne = document.querySelector(".totalOne");
-
-
-
-//add an event listener for when the add button is pressed
+var callTotalTwo = document.querySelector(".callTotalTwo");
+const smsTotalTwo = document.querySelector(".smsTotalTwo");
+const totalTwo = document.querySelector(".totalTwo");
 
 var callsTotal = 0;
 var smsTotal = 0;
 
-callTotalOne.innerHTML = "Hey";
+//add an event listener for when the add button is pressed
+
+
 
 function textBillTotal(){ 
-
 //alert("radioBillAddBtn");
+
 var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
+var billItemType = checkedRadioBtn.value
 if (checkedRadioBtn){
-  
-    var billItemType = checkedRadioBtn.value
     // billItemType will be 'call' or 'sms'
-//console.log(billItemType);
     if (billItemType === "call"){
         callsTotal += 2.75
     }
@@ -37,18 +33,18 @@ if (checkedRadioBtn){
 }  
  
      //update the totals that is displayed on the screen.
-     callTotalOne.innerHTML = callsTotal.toFixed(2);
-     smsTotalOne.innerHTML = smsTotal.toFixed(2);
+     callTotalTwo.innerHTML = callsTotal.toFixed(2);
+     smsTotalTwo.innerHTML = smsTotal.toFixed(2);
      var totalCost = callsTotal + smsTotal;
-     totalOne.innerHTML = totalCost.toFixed(2);
+     totalTwo.innerHTML = totalCost.toFixed(2);
      
      //color the total based on the criteria
      if (totalCost >= 50){
          // adding the danger class will make the text red
-         totalOne.classList.add("danger");
+         totalTwo.classList.add("danger");
      }
      else if (totalCost >= 30){
-        totalOne.classList.add("warning");
+        totalTwo.classList.add("warning");
      }
 }
 

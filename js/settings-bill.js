@@ -1,18 +1,70 @@
 // get a reference to the sms or call radio buttons
+const billItemTypeWithSettings = document.querySelector(".billItemTypeWithSettings:checked");
 
 // get refences to all the settings fields
+const callCostSetting = document.querySelector(".callCostSetting");
+const smsCostSetting = document.querySelector(".smsCostSetting");
+const warningLevelSetting = document.querySelector(".warningLevelSetting");
+const criticalLevelSetting = document.querySelector(".criticalLevelSetting");
 
 //get a reference to the add button
+const radioBillSettingAddBtn = document.querySelector(".radioBillSettingAddBtn");
 
 //get a reference to the 'Update settings' button
+const updateSettings = document.querySelector(".updateSettings");
 
 // create a variables that will keep track of all the settings
 
+
 // create a variables that will keep track of all three totals.
+var callTotalSettings = document.querySelector(".callTotalSettings");
+const smsTotalSettings = document.querySelector(".smsTotalSettings");
+const totalSettings = document.querySelector(".totalSettings");
+
+var callsTotal = 0;
+var smsTotal = 0;
+
 
 //add an event listener for when the 'Update settings' button is pressed
 
+
 //add an event listener for when the add button is pressed
+function SettingBillTotal(){ 
+    //alert("radioBillAddBtn");
+    
+    var RadioBtnchecked = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+    var billItemTypeWithSettings = RadioBtnchecked.value
+    if (RadioBtnchecked){
+        // billItemType will be 'call' or 'sms'
+        if (billItemTypeWithSettings === "call"){
+            callsTotal += 2.75
+        }
+        else if (billItemTypeWithSettings === "sms"){
+            smsTotal += 0.75;
+        }
+    }  
+     
+         //update the totals that is displayed on the screen.
+         callTotalSettings.innerHTML = callsTotal.toFixed(2);
+         smsTotalSettings.innerHTML = smsTotal.toFixed(2);
+         var totalCost = callsTotal + smsTotal;
+         totalSettings.innerHTML = totalCost.toFixed(2);
+         
+
+         /*
+         //color the total based on the criteria
+         if (totalCost >= 50){
+             // adding the danger class will make the text red
+             totalTwo.classList.add("danger");
+         }
+         else if (totalCost >= 30){
+            totalTwo.classList.add("warning");
+         }
+
+         */
+    }
+    
+    radioBillSettingAddBtn.addEventListener('click', SettingBillTotal);
 
 //in the event listener get the value from the billItemTypeRadio radio buttons
 // * add the appropriate value to the call / sms total

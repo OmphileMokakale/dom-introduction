@@ -14,7 +14,8 @@ const radioBillSettingAddBtn = document.querySelector(".radioBillSettingAddBtn")
 const updateSettings = document.querySelector(".updateSettings");
 
 // create a variables that will keep track of all the settings
-
+var newSmsCost = 0;
+var newCallCost = 0;
 
 // create a variables that will keep track of all three totals.
 var callTotalSettings = document.querySelector(".callTotalSettings");
@@ -27,6 +28,35 @@ var smsTotal = 0;
 
 //add an event listener for when the 'Update settings' button is pressed
 
+function SettingBillTotalUpdate(){ 
+
+     newSmsCost = callCostSetting.value;
+     newCallCost = smsCostSetting.value;
+ 
+    billItemTypeCallSettings = callCostSetting.value.trim();
+    billItemTypeSmsSettings = smsCostSetting.value.trim();
+        if (billItemTypeCallSettings){
+            newCallCost += billItemTypeCallSettings;
+        }
+        if (billItemTypeSmsSettings){
+            newSmsCost += billItemTypeSmsSettings;
+        }
+
+         /*
+         //color the total based on the criteria
+         if (totalCost >= 50){
+             // adding the danger class will make the text red
+             totalTwo.classList.add("danger");
+         }
+         else if (totalCost >= 30){
+            totalTwo.classList.add("warning");
+         }
+
+         */
+    }
+    
+    updateSettings.addEventListener('click', SettingBillTotalUpdate);
+
 
 //add an event listener for when the add button is pressed
 function SettingBillTotal(){ 
@@ -37,18 +67,20 @@ function SettingBillTotal(){
     if (RadioBtnchecked){
         // billItemType will be 'call' or 'sms'
         if (billItemTypeWithSettings === "call"){
-            callsTotal += 2.75
+            callsTotal += newCallCost
         }
         else if (billItemTypeWithSettings === "sms"){
-            smsTotal += 0.75;
+            smsTotal += newSmsCost;
         }
+
+        console.log(callsTotal);
+        //update the totals that is displayed on the screen.
+        callTotalSettings.innerHTML = callsTotal.toFixed(2);
+        smsTotalSettings.innerHTML = smsTotal.toFixed(2);
+        var totalCost = callsTotal + smsTotal;
+        totalSettings.innerHTML = totalCost.toFixed(2);
     }  
-     
-         //update the totals that is displayed on the screen.
-         callTotalSettings.innerHTML = callsTotal.toFixed(2);
-         smsTotalSettings.innerHTML = smsTotal.toFixed(2);
-         var totalCost = callsTotal + smsTotal;
-         totalSettings.innerHTML = totalCost.toFixed(2);
+   
          
 
          /*

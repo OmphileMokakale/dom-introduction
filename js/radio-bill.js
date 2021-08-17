@@ -15,8 +15,6 @@ var smsTotal = 0;
 
 //add an event listener for when the add button is pressed
 
-
-
 function textBillTotal(){ 
 //alert("radioBillAddBtn");
 

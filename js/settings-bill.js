@@ -1,5 +1,5 @@
 // get a reference to the sms or call radio buttons
-const billItemTypeWithSettings = document.querySelector(".billItemTypeWithSettings:checked");
+var billItemTypeWithSettings = document.querySelector(".billItemTypeWithSettings:checked");
 
 // get refences to all the settings fields
 const callCostSetting = document.querySelector(".callCostSetting");
@@ -31,26 +31,28 @@ var totalSettings = document.querySelector(".totalSettings");
 
 function SettingBillTotalUpdate() {
 
-    newCallCost = callCostSetting.value;
-    newSmsCost = smsCostSetting.value;
-    WarningLevel = warningLevelSetting.value;
-    criticalLevel = criticalLevelSetting.value;
+    newCallCost = Number(callCostSetting.value);
+    newSmsCost = Number(smsCostSetting.value);
+    WarningLevel = Number(warningLevelSetting.value);
+    criticalLevel = Number(criticalLevelSetting.value);
 
-    console.log(newCallCost)
-    billItemTypeCallSettings = callCostSetting.value.trim();
-    billItemTypeSmsSettings = smsCostSetting.value.trim();
-    if (billItemTypeCallSettings) {
-        newCallCost += billItemTypeCallSettings;
-    }
-    if (billItemTypeSmsSettings) {
-        newSmsCost += billItemTypeSmsSettings;
-    }
-    if (billItemTypeSmsSettings) {
-        WarningLevel += billItemTypeSmsSettings;
-    }
-    if (billItemTypeSmsSettings) {
-        criticalLevel += billItemTypeSmsSettings;
-    }
+
+     
+    //  billItemTypeCallSettings = callCostSetting.value;
+    //  console.log(billItemTypeCallSettings)
+    // billItemTypeSmsSettings = smsCostSetting.value.trim();
+    // if (billItemTypeCallSettings) {
+    //     newCallCost += billItemTypeCallSettings;
+    // }
+    // if (billItemTypeSmsSettings) {
+    //     newSmsCost += billItemTypeSmsSettings;
+    // }
+    // if (billItemTypeSmsSettings) {
+    //     WarningLevel += billItemTypeSmsSettings;
+    // }
+    // if (billItemTypeSmsSettings) {
+    //     criticalLevel += billItemTypeSmsSettings;
+    // }
 
     /*
     //color the total based on the criteria
@@ -94,19 +96,18 @@ callTotalSettings.innerHTML = callsTotal.toFixed(2);
 smsTotalSettings.innerHTML = smsTotal.toFixed(2);
 var totalCost = callsTotal + smsTotal;
 totalSettings.innerHTML = totalCost.toFixed(2);
-    /*
+  
     //color the total based on the criteria
-    if (totalCost >= 50){
+    if (totalCost >= criticalLevel){
         // adding the danger class will make the text red
-        totalTwo.classList.add("danger");
+        totalSettings.classList.add("danger");
     }
-    else if (totalCost >= 30){
-       totalTwo.classList.add("warning");
+    else if (totalCost >= WarningLevel ){
+        totalSettings.classList.add("warning");
     }
 
-    */
+   
 }
-
 
 
 

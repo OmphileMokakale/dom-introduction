@@ -25,8 +25,6 @@ var smsTotalSettings = document.querySelector(".smsTotalSettings");
 var totalSettings = document.querySelector(".totalSettings");
 
 
-
-
 //add an event listener for when the 'Update settings' button is pressed
 
 function SettingBillTotalUpdate() {
@@ -108,7 +106,6 @@ totalSettings.innerHTML = totalCost.toFixed(2);
 
    
 }
-
 
 
 radioBillSettingAddBtn.addEventListener('click', SettingBillTotal);
